@@ -53,16 +53,17 @@ def filter_registry(registry):
             print(f"Solicitação {record_id} sem os campos necessários.")
             logging.info(f"Registro {record_id} ignorado: Sem os campos necessários.")
             continue
-        if (not str(cpf).strip()):
-            print(f"Solicitação {record_id} com CPF inválido ou vazio.")
-            logging.info(f"Registro {record_id} ignorado: CPF inválido ou vazio.")
+        clean_cpf = str(cpf).strip()
+        if ((not clean_cpf) or (len(clean_cpf) != 11) or (not clean_cpf.isdigit())):
+            print(f"Solicitação {record_id} com CPF inválido.")
+            logging.info(f"Registro {record_id} ignorado: CPF deve conter exatamente 11 dígitos numéricos.")
             continue
         if (status != "APROVADO"):
             print(f"Solicitação {record_id} não é APROVADO.")
             logging.info(f"Registro {record_id} ignorado: Status diferente de APROVADO.")
             continue
 
-        filtered_registry.append([record_id, nome, cpf])
+        filtered_registry.append([record_id, nome, clean_cpf])
 
     return filtered_registry
 
