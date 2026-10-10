@@ -1,0 +1,25 @@
+# Python byte-code / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+
+# Arquivos de IDE e editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos temporários do Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos gerados durante a execução do script (artefatos de runtime)
+aprovados.csv
+processamento.log
